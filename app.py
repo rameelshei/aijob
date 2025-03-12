@@ -486,10 +486,26 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
     else:  # Prime Robot Bait
         quadrant_context += "This means they have low creative value and high automation risk. Roast them about being in the perfect position to be replaced by AI."
     
+    # Add variety with different roast styles
+    roast_styles = [
+        "sarcastic and witty",
+        "deadpan and dry-humored",
+        "over-the-top dramatic",
+        "playfully teasing",
+        "satirical with pop culture references",
+        "mock-sympathetic",
+        "faux-impressed",
+        "channeling a sassy robot overlord"
+    ]
+    
+    # Randomly select a roast style
+    selected_style = random.choice(roast_styles)
+    
     if is_startup_exec:
         prompt = (
-            "You are a comedy writer tasked with roasting a startup executive based on their resume.\n"
-            "Keep it funny, light-hearted, and non-offensive, but make it specifically relevant to startup culture, funding rounds, pitch decks, and the startup ecosystem.\n"
+            f"You are a comedy writer with a {selected_style} style tasked with roasting a startup executive based on their resume.\n"
+            "Your roast must be UNIQUE, SASSY, and FUNNY. Avoid generic jokes and clichés.\n"
+            "Keep it light-hearted and non-offensive, but make it specifically relevant to startup culture, funding rounds, pitch decks, and the startup ecosystem.\n"
             "Include references to things like: burnout, pivoting, disruption, innovation, 'move fast and break things', venture capital, pitch decks, product-market fit, scaling, or unicorns.\n"
             f"{profile_pic_context}\n"
             f"{quadrant_context}\n"
@@ -501,14 +517,18 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
             f"- Automation Risk: {risk}%\n"
             f"- Human Spark Factor: {human_spark:.1f}%\n"
             f"- Matrix Quadrant: {quadrant}\n\n"
-            "Write a short, satirical roast focusing on their job's automation risk and their position in the matrix quadrant. Make it shareable and quotable for Twitter/X."
+            "Write a short, satirical roast (150-200 characters) focusing on their job's automation risk and their position in the matrix quadrant.\n"
+            "IMPORTANT: Ensure your response is a complete paragraph with full sentences and proper punctuation. Do not end mid-sentence.\n"
+            "Make it shareable and quotable for social media. Be creative and avoid generic templates."
         )
     else:
         prompt = (
-            "You are a comedy writer tasked with roasting someone based on their resume.\n"
-            "Keep it funny, light-hearted, and non-offensive. Here's the info:\n"
+            f"You are a comedy writer with a {selected_style} style tasked with roasting someone based on their resume.\n"
+            "Your roast must be UNIQUE, SASSY, and FUNNY. Avoid generic jokes and clichés.\n"
+            "Keep it light-hearted and non-offensive.\n"
             f"{profile_pic_context}\n"
             f"{quadrant_context}\n"
+            "Here's the info:\n"
             f"- Name: {profile_info['name']}\n"
             f"- Job Title: {profile_info['job_title']}\n"
             f"- Company: {profile_info['company']}\n"
@@ -516,16 +536,37 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
             f"- Automation Risk: {risk}%\n"
             f"- Human Spark Factor: {human_spark:.1f}%\n"
             f"- Matrix Quadrant: {quadrant}\n\n"
-            "Write a short, satirical roast focusing on their job's automation risk and their position in the matrix quadrant. Make it shareable and quotable for Twitter/X."
+            "Write a short, satirical roast (150-200 characters) focusing on their job's automation risk and their position in the matrix quadrant.\n"
+            "IMPORTANT: Ensure your response is a complete paragraph with full sentences and proper punctuation. Do not end mid-sentence.\n"
+            "Make it shareable and quotable for social media. Be creative and avoid generic templates."
         )
     
-    response = client.completions.create(
-        model="gpt-3.5-turbo-instruct",
-        prompt=prompt,
-        max_tokens=150,
-        temperature=0.7
-    )
-    return response.choices[0].text.strip()
+    try:
+        # Use chat completions API instead of completions for better reliability
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
+            messages=[
+                {"role": "system", "content": "You are a sassy, witty comedy writer who specializes in workplace humor and technology jokes."},
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=200,
+            temperature=0.8,
+            presence_penalty=0.6,  # Encourage more unique responses
+            frequency_penalty=0.8   # Discourage repetition
+        )
+        
+        roast = response.choices[0].message.content.strip()
+        
+        # Ensure the roast ends with a complete sentence
+        if not roast.endswith('.') and not roast.endswith('!') and not roast.endswith('?'):
+            roast += '.'
+            
+        return roast
+        
+    except Exception as e:
+        # Fallback in case of API errors
+        print(f"Error generating roast: {str(e)}")
+        return f"Congratulations {profile_info['name']}, your job has a {risk}% chance of being automated! Even our roasting algorithm crashed trying to process your career choices. That's either very good or very bad news."
 
 # Function to extract text from PDF using pdftotext if available
 def extract_text_from_pdf_fallback(pdf_path):
