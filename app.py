@@ -30,297 +30,297 @@ PROXYCURL_API_KEY = os.environ.get('PROXYCURL_API_KEY', '')
 # Sample job risks dictionary (expand this with real data)
 job_risks = {
     # Technology
-    'Software Engineer': 0.5,
-    'Software Developer': 0.5,
-    'Web Developer': 0.6,
-    'Frontend Developer': 0.55,
-    'Backend Developer': 0.45,
-    'Full Stack Developer': 0.5,
-    'Mobile Developer': 0.5,
-    'iOS Developer': 0.5,
-    'Android Developer': 0.5,
-    'DevOps Engineer': 0.4,
-    'Site Reliability Engineer': 0.4,
-    'Systems Administrator': 0.6,
-    'Network Administrator': 0.6,
-    'Database Administrator': 0.7,
-    'IT Support': 0.8,
-    'IT Specialist': 0.7,
-    'Helpdesk': 0.9,
-    'QA Engineer': 0.7,
-    'QA Tester': 0.8,
-    'Test Engineer': 0.7,
-    'Security Engineer': 0.4,
-    'Cybersecurity Analyst': 0.4,
-    'Cloud Engineer': 0.5,
-    'Cloud Architect': 0.3,
-    'Solutions Architect': 0.3,
-    'Technical Architect': 0.3,
-    'CTO': 0.3,
-    'Chief Technology Officer': 0.3,
-    'VP of Engineering': 0.3,
-    'Engineering Manager': 0.4,
-    'Technical Lead': 0.4,
-    'Tech Lead': 0.4,
+    'Software Engineer': 0.7,
+    'Software Developer': 0.7,
+    'Web Developer': 0.8,
+    'Frontend Developer': 0.75,
+    'Backend Developer': 0.65,
+    'Full Stack Developer': 0.7,
+    'Mobile Developer': 0.7,
+    'iOS Developer': 0.7,
+    'Android Developer': 0.7,
+    'DevOps Engineer': 0.6,
+    'Site Reliability Engineer': 0.6,
+    'Systems Administrator': 0.8,
+    'Network Administrator': 0.8,
+    'Database Administrator': 0.9,
+    'IT Support': 0.95,
+    'IT Specialist': 0.9,
+    'Helpdesk': 0.95,
+    'QA Engineer': 0.85,
+    'QA Tester': 0.9,
+    'Test Engineer': 0.85,
+    'Security Engineer': 0.6,
+    'Cybersecurity Analyst': 0.6,
+    'Cloud Engineer': 0.7,
+    'Cloud Architect': 0.5,
+    'Solutions Architect': 0.5,
+    'Technical Architect': 0.5,
+    'CTO': 0.5,
+    'Chief Technology Officer': 0.5,
+    'VP of Engineering': 0.5,
+    'Engineering Manager': 0.6,
+    'Technical Lead': 0.6,
+    'Tech Lead': 0.6,
     
     # Data
-    'Data Scientist': 0.4,
-    'Data Analyst': 0.6,
-    'Data Engineer': 0.5,
-    'Machine Learning Engineer': 0.3,
-    'AI Researcher': 0.2,
-    'Business Intelligence Analyst': 0.6,
-    'Business Analyst': 0.7,
-    'Data Entry Clerk': 0.9,
-    'Data Entry Specialist': 0.9,
+    'Data Scientist': 0.6,
+    'Data Analyst': 0.8,
+    'Data Engineer': 0.7,
+    'Machine Learning Engineer': 0.5,
+    'AI Researcher': 0.4,
+    'Business Intelligence Analyst': 0.8,
+    'Business Analyst': 0.85,
+    'Data Entry Clerk': 0.95,
+    'Data Entry Specialist': 0.95,
     
     # Design
-    'Graphic Designer': 0.7,
-    'UI Designer': 0.65,
-    'UX Designer': 0.6,
-    'UI/UX Designer': 0.65,
-    'Product Designer': 0.6,
-    'Web Designer': 0.7,
-    'Visual Designer': 0.7,
-    'Illustrator': 0.6,
-    'Art Director': 0.5,
-    'Creative Director': 0.4,
+    'Graphic Designer': 0.85,
+    'UI Designer': 0.8,
+    'UX Designer': 0.75,
+    'UI/UX Designer': 0.8,
+    'Product Designer': 0.75,
+    'Web Designer': 0.85,
+    'Visual Designer': 0.85,
+    'Illustrator': 0.75,
+    'Art Director': 0.65,
+    'Creative Director': 0.6,
     
     # Management
-    'Project Manager': 0.3,
-    'Product Manager': 0.35,
-    'Program Manager': 0.4,
-    'Operations Manager': 0.5,
-    'Office Manager': 0.7,
-    'CEO': 0.2,
-    'Chief Executive Officer': 0.2,
-    'CFO': 0.4,
-    'Chief Financial Officer': 0.4,
-    'COO': 0.3,
-    'Chief Operating Officer': 0.3,
-    'Director': 0.3,
-    'Vice President': 0.3,
-    'Manager': 0.5,
-    'Team Lead': 0.4,
-    'Supervisor': 0.6,
+    'Project Manager': 0.5,
+    'Product Manager': 0.55,
+    'Program Manager': 0.6,
+    'Operations Manager': 0.7,
+    'Office Manager': 0.85,
+    'CEO': 0.7,
+    'Chief Executive Officer': 0.7,
+    'CFO': 0.6,
+    'Chief Financial Officer': 0.6,
+    'COO': 0.5,
+    'Chief Operating Officer': 0.5,
+    'Director': 0.5,
+    'Vice President': 0.5,
+    'Manager': 0.7,
+    'Team Lead': 0.6,
+    'Supervisor': 0.8,
     
     # Marketing
-    'Marketing Manager': 0.4,
-    'Marketing Specialist': 0.6,
-    'Digital Marketing Specialist': 0.6,
-    'SEO Specialist': 0.7,
-    'Social Media Manager': 0.6,
-    'Content Writer': 0.8,
-    'Content Creator': 0.7,
-    'Copywriter': 0.75,
-    'Content Strategist': 0.6,
-    'Brand Manager': 0.5,
-    'Public Relations Specialist': 0.6,
-    'Communications Specialist': 0.6,
+    'Marketing Manager': 0.6,
+    'Marketing Specialist': 0.8,
+    'Digital Marketing Specialist': 0.8,
+    'SEO Specialist': 0.85,
+    'Social Media Manager': 0.8,
+    'Content Writer': 0.9,
+    'Content Creator': 0.85,
+    'Copywriter': 0.9,
+    'Content Strategist': 0.75,
+    'Brand Manager': 0.7,
+    'Public Relations Specialist': 0.75,
+    'Communications Specialist': 0.75,
     
     # Sales
-    'Sales Representative': 0.7,
-    'Sales Associate': 0.8,
-    'Account Executive': 0.6,
-    'Account Manager': 0.5,
-    'Business Development Manager': 0.5,
-    'Sales Manager': 0.5,
-    'Customer Success Manager': 0.6,
+    'Sales Representative': 0.85,
+    'Sales Associate': 0.9,
+    'Account Executive': 0.75,
+    'Account Manager': 0.7,
+    'Business Development Manager': 0.7,
+    'Sales Manager': 0.7,
+    'Customer Success Manager': 0.75,
     
     # HR
-    'HR Manager': 0.5,
-    'Human Resources Manager': 0.5,
-    'HR Specialist': 0.7,
-    'Human Resources Specialist': 0.7,
-    'Recruiter': 0.7,
-    'Talent Acquisition Specialist': 0.7,
-    'HR Coordinator': 0.8,
-    'Human Resources Coordinator': 0.8,
+    'HR Manager': 0.7,
+    'Human Resources Manager': 0.7,
+    'HR Specialist': 0.85,
+    'Human Resources Specialist': 0.85,
+    'Recruiter': 0.85,
+    'Talent Acquisition Specialist': 0.85,
+    'HR Coordinator': 0.9,
+    'Human Resources Coordinator': 0.9,
     
     # Finance
-    'Accountant': 0.8,
-    'Financial Analyst': 0.6,
-    'Financial Advisor': 0.7,
-    'Bookkeeper': 0.9,
-    'Auditor': 0.7,
-    'Tax Preparer': 0.9,
-    'Investment Banker': 0.6,
-    'Investment Analyst': 0.6,
-    'Loan Officer': 0.8,
-    'Insurance Agent': 0.8,
+    'Accountant': 0.9,
+    'Financial Analyst': 0.75,
+    'Financial Advisor': 0.85,
+    'Bookkeeper': 0.95,
+    'Auditor': 0.85,
+    'Tax Preparer': 0.95,
+    'Investment Banker': 0.75,
+    'Investment Analyst': 0.75,
+    'Loan Officer': 0.9,
+    'Insurance Agent': 0.9,
     
     # Healthcare
-    'Doctor': 0.3,
-    'Physician': 0.3,
-    'Surgeon': 0.2,
-    'Nurse': 0.4,
-    'Registered Nurse': 0.4,
-    'Nurse Practitioner': 0.3,
-    'Medical Assistant': 0.6,
-    'Pharmacist': 0.6,
-    'Pharmacy Technician': 0.8,
-    'Physical Therapist': 0.4,
-    'Occupational Therapist': 0.4,
-    'Dentist': 0.3,
-    'Dental Hygienist': 0.5,
-    'Veterinarian': 0.3,
-    'Vet Tech': 0.6,
+    'Doctor': 0.45,
+    'Physician': 0.45,
+    'Surgeon': 0.35,
+    'Nurse': 0.55,
+    'Registered Nurse': 0.55,
+    'Nurse Practitioner': 0.45,
+    'Medical Assistant': 0.75,
+    'Pharmacist': 0.75,
+    'Pharmacy Technician': 0.9,
+    'Physical Therapist': 0.55,
+    'Occupational Therapist': 0.55,
+    'Dentist': 0.45,
+    'Dental Hygienist': 0.65,
+    'Veterinarian': 0.45,
+    'Vet Tech': 0.75,
     
     # Education
-    'Teacher': 0.5,
-    'Professor': 0.4,
-    'Tutor': 0.6,
-    'School Administrator': 0.5,
-    'Principal': 0.4,
-    'Librarian': 0.7,
-    'Research Assistant': 0.6,
-    'Researcher': 0.4,
+    'Teacher': 0.65,
+    'Professor': 0.55,
+    'Tutor': 0.75,
+    'School Administrator': 0.65,
+    'Principal': 0.55,
+    'Librarian': 0.85,
+    'Research Assistant': 0.75,
+    'Researcher': 0.55,
     
     # Legal
-    'Lawyer': 0.6,
-    'Attorney': 0.6,
-    'Paralegal': 0.8,
-    'Legal Assistant': 0.8,
-    'Judge': 0.3,
-    'Legal Counsel': 0.6,
+    'Lawyer': 0.75,
+    'Attorney': 0.75,
+    'Paralegal': 0.9,
+    'Legal Assistant': 0.9,
+    'Judge': 0.45,
+    'Legal Counsel': 0.75,
     
     # Service Industry
-    'Chef': 0.4,
-    'Cook': 0.7,
-    'Waiter': 0.9,
-    'Waitress': 0.9,
-    'Server': 0.9,
-    'Bartender': 0.8,
-    'Barista': 0.8,
-    'Host': 0.9,
-    'Hostess': 0.9,
-    'Housekeeper': 0.9,
-    'Janitor': 0.8,
-    'Custodian': 0.8,
-    'Cleaner': 0.9,
-    'Security Guard': 0.8,
-    'Receptionist': 0.9,
-    'Customer Service Representative': 0.9,
-    'Customer Support': 0.85,
-    'Call Center Agent': 0.95,
+    'Chef': 0.55,
+    'Cook': 0.85,
+    'Waiter': 0.95,
+    'Waitress': 0.95,
+    'Server': 0.95,
+    'Bartender': 0.9,
+    'Barista': 0.9,
+    'Host': 0.95,
+    'Hostess': 0.95,
+    'Housekeeper': 0.95,
+    'Janitor': 0.9,
+    'Custodian': 0.9,
+    'Cleaner': 0.95,
+    'Security Guard': 0.9,
+    'Receptionist': 0.95,
+    'Customer Service Representative': 0.95,
+    'Customer Support': 0.9,
+    'Call Center Agent': 0.98,
     
     # Transportation
-    'Truck Driver': 0.9,
-    'Delivery Driver': 0.9,
-    'Uber Driver': 0.95,
-    'Lyft Driver': 0.95,
-    'Taxi Driver': 0.95,
-    'Bus Driver': 0.9,
-    'Pilot': 0.6,
-    'Flight Attendant': 0.7,
+    'Truck Driver': 0.95,
+    'Delivery Driver': 0.95,
+    'Uber Driver': 0.98,
+    'Lyft Driver': 0.98,
+    'Taxi Driver': 0.98,
+    'Bus Driver': 0.95,
+    'Pilot': 0.75,
+    'Flight Attendant': 0.85,
     
     # Retail
-    'Retail Worker': 0.9,
-    'Retail Associate': 0.9,
-    'Cashier': 0.95,
-    'Store Manager': 0.7,
-    'Store Associate': 0.9,
-    'Sales Clerk': 0.9,
+    'Retail Worker': 0.95,
+    'Retail Associate': 0.95,
+    'Cashier': 0.98,
+    'Store Manager': 0.85,
+    'Store Associate': 0.95,
+    'Sales Clerk': 0.95,
     
     # Creative
-    'Photographer': 0.6,
-    'Videographer': 0.5,
-    'Video Editor': 0.6,
-    'Film Editor': 0.6,
-    'Actor': 0.4,
-    'Actress': 0.4,
-    'Musician': 0.4,
-    'Writer': 0.6,
-    'Journalist': 0.7,
-    'Reporter': 0.7,
-    'Editor': 0.6,
+    'Photographer': 0.75,
+    'Videographer': 0.65,
+    'Video Editor': 0.75,
+    'Film Editor': 0.75,
+    'Actor': 0.55,
+    'Actress': 0.55,
+    'Musician': 0.55,
+    'Writer': 0.75,
+    'Journalist': 0.85,
+    'Reporter': 0.85,
+    'Editor': 0.75,
     
     # Trades
-    'Electrician': 0.5,
-    'Plumber': 0.5,
-    'Carpenter': 0.6,
-    'Construction Worker': 0.7,
-    'Mechanic': 0.6,
-    'HVAC Technician': 0.6,
-    'Welder': 0.7,
-    'Machinist': 0.8,
-    'Factory Worker': 0.9,
-    'Assembly Line Worker': 0.95,
+    'Electrician': 0.65,
+    'Plumber': 0.65,
+    'Carpenter': 0.75,
+    'Construction Worker': 0.85,
+    'Mechanic': 0.75,
+    'HVAC Technician': 0.75,
+    'Welder': 0.85,
+    'Machinist': 0.9,
+    'Factory Worker': 0.95,
+    'Assembly Line Worker': 0.98,
     
     # Miscellaneous
-    'Consultant': 0.5,
-    'Freelancer': 0.6,
-    'Contractor': 0.7,
-    'Analyst': 0.6,
-    'Specialist': 0.7,
-    'Coordinator': 0.8,
-    'Assistant': 0.9,
-    'Intern': 0.8,
-    'Student': 0.7
+    'Consultant': 0.65,
+    'Freelancer': 0.75,
+    'Contractor': 0.85,
+    'Analyst': 0.75,
+    'Specialist': 0.85,
+    'Coordinator': 0.9,
+    'Assistant': 0.95,
+    'Intern': 0.9,
+    'Student': 0.85
 }
 
 # Add startup-specific job titles to the job_risks dictionary
 startup_jobs = {
     # Startup Leadership
-    'Founder': 0.3,
-    'Co-Founder': 0.3,
-    'Startup CEO': 0.25,
-    'Startup CTO': 0.3,
-    'Technical Co-Founder': 0.3,
-    'Non-Technical Co-Founder': 0.4,
-    'Founding Engineer': 0.4,
-    'Chief Product Officer': 0.35,
-    'Chief Revenue Officer': 0.4,
-    'Chief Marketing Officer': 0.45,
-    'Chief Growth Officer': 0.4,
-    'Chief of Staff': 0.5,
-    'VP of Product': 0.4,
-    'Head of Product': 0.4,
-    'VP of Engineering': 0.35,
-    'Head of Engineering': 0.35,
-    'VP of Design': 0.5,
-    'Head of Design': 0.5,
-    'VP of Sales': 0.4,
-    'Head of Sales': 0.4,
-    'VP of Marketing': 0.45,
-    'Head of Marketing': 0.45,
-    'VP of Operations': 0.5,
-    'Head of Operations': 0.5,
-    'VP of People': 0.6,
-    'Head of People': 0.6,
-    'VP of Customer Success': 0.5,
-    'Head of Customer Success': 0.5,
-    'VP of Business Development': 0.4,
-    'Head of Business Development': 0.4,
+    'Founder': 0.7,
+    'Co-Founder': 0.7,
+    'Startup CEO': 0.7,
+    'Startup CTO': 0.5,
+    'Technical Co-Founder': 0.5,
+    'Non-Technical Co-Founder': 0.6,
+    'Founding Engineer': 0.6,
+    'Chief Product Officer': 0.55,
+    'Chief Revenue Officer': 0.6,
+    'Chief Marketing Officer': 0.65,
+    'Chief Growth Officer': 0.6,
+    'Chief of Staff': 0.7,
+    'VP of Product': 0.6,
+    'Head of Product': 0.6,
+    'VP of Engineering': 0.55,
+    'Head of Engineering': 0.55,
+    'VP of Design': 0.7,
+    'Head of Design': 0.7,
+    'VP of Sales': 0.6,
+    'Head of Sales': 0.6,
+    'VP of Marketing': 0.65,
+    'Head of Marketing': 0.65,
+    'VP of Operations': 0.7,
+    'Head of Operations': 0.7,
+    'VP of People': 0.8,
+    'Head of People': 0.8,
+    'VP of Customer Success': 0.7,
+    'Head of Customer Success': 0.7,
+    'VP of Business Development': 0.6,
+    'Head of Business Development': 0.6,
     
     # Startup-specific roles
-    'Growth Hacker': 0.6,
-    'Growth Marketer': 0.6,
-    'Product Manager': 0.4,
-    'Product Owner': 0.4,
-    'Scrum Master': 0.7,
-    'DevOps Engineer': 0.5,
-    'Full Stack Developer': 0.5,
-    'Frontend Engineer': 0.55,
-    'Backend Engineer': 0.45,
-    'Mobile Developer': 0.5,
-    'UI/UX Designer': 0.6,
-    'Product Designer': 0.55,
-    'Customer Success Manager': 0.6,
-    'Community Manager': 0.7,
-    'Content Marketer': 0.7,
-    'SEO Specialist': 0.8,
-    'SEM Specialist': 0.8,
-    'Paid Acquisition Manager': 0.7,
-    'Venture Capital Associate': 0.6,
-    'Venture Capital Analyst': 0.7,
-    'Angel Investor': 0.3,
-    'Startup Advisor': 0.4,
-    'Startup Mentor': 0.3,
-    'Startup Coach': 0.4,
-    'Pitch Deck Consultant': 0.7,
-    'Startup Recruiter': 0.7,
-    'Technical Recruiter': 0.7,
+    'Growth Hacker': 0.8,
+    'Growth Marketer': 0.8,
+    'Product Manager': 0.6,
+    'Product Owner': 0.6,
+    'Scrum Master': 0.85,
+    'DevOps Engineer': 0.7,
+    'Full Stack Developer': 0.7,
+    'Frontend Engineer': 0.75,
+    'Backend Engineer': 0.65,
+    'Mobile Developer': 0.7,
+    'UI/UX Designer': 0.8,
+    'Product Designer': 0.75,
+    'Customer Success Manager': 0.8,
+    'Community Manager': 0.85,
+    'Content Marketer': 0.85,
+    'SEO Specialist': 0.9,
+    'SEM Specialist': 0.9,
+    'Paid Acquisition Manager': 0.85,
+    'Venture Capital Associate': 0.75,
+    'Venture Capital Analyst': 0.85,
+    'Angel Investor': 0.5,
+    'Startup Advisor': 0.6,
+    'Startup Mentor': 0.5,
+    'Startup Coach': 0.6,
+    'Pitch Deck Consultant': 0.85,
+    'Startup Recruiter': 0.85,
+    'Technical Recruiter': 0.85,
 }
 
 # Add startup jobs to the main job_risks dictionary
@@ -406,49 +406,90 @@ def extract_resume_info(text):
 def get_automation_risk(job_title):
     """
     Matches job title to automation risk using fuzzy matching.
-    Returns risk as a percentage.
+    Returns risk as a percentage with some randomness.
     """
     # Clean the job title for better matching
     cleaned_job_title = job_title.lower().strip()
     
+    # Base risk value
+    base_risk = None
+    
     # Try exact match first
     for key in job_risks:
         if key.lower() == cleaned_job_title:
-            return job_risks[key] * 100
+            base_risk = job_risks[key] * 100
+            break
     
     # If no exact match, try fuzzy matching
-    best_match = process.extractOne(cleaned_job_title, job_risks.keys())
-    
-    # Lower threshold to 70% for more matches
-    if best_match and best_match[1] > 70:
-        return job_risks[best_match[0]] * 100
+    if base_risk is None:
+        best_match = process.extractOne(cleaned_job_title, job_risks.keys())
+        
+        # Lower threshold to 70% for more matches
+        if best_match and best_match[1] > 70:
+            base_risk = job_risks[best_match[0]] * 100
     
     # If still no match, try matching on parts of the job title
-    words = cleaned_job_title.split()
-    if len(words) > 1:
-        for word in words:
-            if len(word) > 3:  # Only consider meaningful words
-                word_match = process.extractOne(word, job_risks.keys())
-                if word_match and word_match[1] > 80:
-                    return job_risks[word_match[0]] * 100
+    if base_risk is None:
+        words = cleaned_job_title.split()
+        if len(words) > 1:
+            for word in words:
+                if len(word) > 3:  # Only consider meaningful words
+                    word_match = process.extractOne(word, job_risks.keys())
+                    if word_match and word_match[1] > 80:
+                        base_risk = job_risks[word_match[0]] * 100
+                        break
     
     # Default risk if no match found (medium risk)
-    print(f"No match found for job title: {job_title}")
-    return 50.0
+    if base_risk is None:
+        print(f"No match found for job title: {job_title}")
+        base_risk = 50.0
+    
+    # Add randomness to the risk score
+    # For tech audience, we want more variability
+    random_factor = random.uniform(-10, 10)  # Random value between -10 and 10
+    
+    # Special case for founders and CEOs - ensure they get high risk
+    if any(keyword in cleaned_job_title for keyword in ['founder', 'co-founder', 'ceo', 'chief executive']):
+        # For founders and CEOs, ensure risk is at least 65% and add some randomness
+        base_risk = max(base_risk, 65.0)
+        random_factor = random.uniform(0, 10)  # Only positive randomness for founders/CEOs
+    
+    # Apply randomness
+    final_risk = base_risk + random_factor
+    
+    # Ensure risk stays within 5-95% range (we don't want 0% or 100% for dramatic effect)
+    final_risk = max(5.0, min(95.0, final_risk))
+    
+    return final_risk
 
 # Function to generate a humorous roast
 def generate_roast(profile_info, risk, has_profile_pic=False):
     """
     Uses OpenAI API to generate a funny roast based on profile and risk.
     """
-    # Determine if this is likely a startup executive/manager
-    is_startup_exec = False
-    startup_keywords = ['founder', 'ceo', 'cto', 'chief', 'head of', 'vp', 'director', 'lead', 'startup', 'venture']
+    # Determine the specific executive type for more targeted roasts
+    job_title_lower = profile_info['job_title'].lower()
+    company_lower = profile_info['company'].lower()
     
-    for keyword in startup_keywords:
-        if keyword.lower() in profile_info['job_title'].lower() or keyword.lower() in profile_info['company'].lower():
-            is_startup_exec = True
-            break
+    # More specific executive type detection
+    is_founder = any(keyword in job_title_lower for keyword in ['founder', 'co-founder', 'founding'])
+    is_ceo = any(keyword in job_title_lower for keyword in ['ceo', 'chief executive', 'chief exec'])
+    is_cto = any(keyword in job_title_lower for keyword in ['cto', 'chief technology', 'chief tech'])
+    is_other_exec = any(keyword in job_title_lower for keyword in ['chief', 'head of', 'vp', 'director', 'lead'])
+    
+    # Determine if this is likely a startup
+    is_startup = 'startup' in job_title_lower or 'startup' in company_lower or risk > 40
+    
+    # Determine executive type for roast customization
+    exec_type = "generic"
+    if is_founder:
+        exec_type = "founder"
+    elif is_ceo:
+        exec_type = "ceo"
+    elif is_cto:
+        exec_type = "cto"
+    elif is_other_exec:
+        exec_type = "executive"
     
     # Calculate human spark factor (inverse of risk, but with some randomness)
     # For demo purposes, we'll use a formula that gives higher spark to lower risk jobs
@@ -486,11 +527,23 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
     else:  # Prime Robot Bait
         quadrant_context += "This means they have low creative value and high automation risk. Roast them about being in the perfect position to be replaced by AI."
     
-    if is_startup_exec:
+    # Add executive-specific context
+    exec_context = ""
+    if exec_type == "founder":
+        exec_context = "This person is a founder. Roast them about typical founder traits like overconfidence, pivoting too much, unrealistic expectations, living on ramen while claiming to be 'crushing it', pitching to VCs who don't understand their product, or having a 'revolutionary' idea that's actually been done 100 times before."
+    elif exec_type == "ceo":
+        exec_context = "This person is a CEO. Roast them about typical CEO traits like taking credit for others' work, making meaningless corporate announcements, having an inflated salary compared to employees, spending too much time on CNBC instead of running the company, or making decisions based on what they read in airport business books."
+    elif exec_type == "cto":
+        exec_context = "This person is a CTO. Roast them about typical CTO traits like being out of touch with actual coding, choosing trendy tech stacks that nobody can maintain, claiming to be 'technical' despite not having written code in years, or creating architecture diagrams that nobody understands."
+    elif exec_type == "executive":
+        exec_context = "This person is an executive. Roast them about typical executive traits like having meetings about meetings, using buzzwords nobody understands, making strategic pivots that are actually just panic moves, or having an impressive title for a company of 5 people."
+    
+    if is_startup:
         prompt = (
-            "You are a comedy writer tasked with roasting a startup executive based on their resume.\n"
+            f"You are a comedy writer tasked with roasting a {exec_type} based on their resume.\n"
             "Your roast should be funny, creative, and have personality. Use colorful language, clever analogies, and humorous observations.\n"
             "Keep it light-hearted and non-offensive, but make it specifically relevant to startup culture and the tech industry.\n"
+            f"{exec_context}\n"
             "Include references to one or two of these topics: burnout, pivoting, disruption, innovation, 'move fast and break things', venture capital, pitch decks, product-market fit, scaling, unicorns, failed IPOs, over-valuation, WeWork-style downfalls, startup buzzwords, AI hype, crypto crashes, endless funding rounds, or 'we're like Uber but for X'.\n"
             f"{profile_pic_context}\n"
             f"{quadrant_context}\n"
