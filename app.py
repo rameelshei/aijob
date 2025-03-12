@@ -488,8 +488,8 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
     
     if is_startup_exec:
         prompt = (
-            "You are a comedy writer with a dry, sarcastic style tasked with roasting a startup executive based on their resume.\n"
-            "Your roast should be witty, observational, and subtly sarcastic. Avoid flowery language, metaphors, and over-the-top humor.\n"
+            "You are a comedy writer tasked with roasting a startup executive based on their resume.\n"
+            "Your roast should be funny, creative, and have personality. Use colorful language, clever analogies, and humorous observations.\n"
             "Keep it light-hearted and non-offensive, but make it specifically relevant to startup culture and the tech industry.\n"
             "Include references to one or two of these topics: burnout, pivoting, disruption, innovation, 'move fast and break things', venture capital, pitch decks, product-market fit, scaling, unicorns, failed IPOs, over-valuation, WeWork-style downfalls, startup buzzwords, AI hype, crypto crashes, endless funding rounds, or 'we're like Uber but for X'.\n"
             f"{profile_pic_context}\n"
@@ -502,14 +502,14 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
             f"- Automation Risk: {risk}%\n"
             f"- Human Spark Factor: {human_spark:.1f}%\n"
             f"- Matrix Quadrant: {quadrant}\n\n"
-            "Write a short, satirical roast (150-200 characters) focusing on their job's automation risk and their position in the matrix quadrant.\n"
-            "IMPORTANT: Ensure your response is a complete paragraph with full sentences and proper punctuation. Do not end mid-sentence.\n"
-            "Make it shareable and quotable for social media. Be direct, concise, and avoid unnecessary flourishes."
+            "Write a short, funny roast (2-3 sentences) focusing on their job's automation risk and their position in the matrix quadrant.\n"
+            "IMPORTANT: Ensure your response uses proper sentence structure and punctuation. Make it funny without being corny.\n"
+            "For reference, here's a good example of the tone and style: 'Rameel's smile looks like he just discovered the magic of flash photography for the first time. His LinkedIn skills list is probably longer than his Tinder matches. That shirt has more stars than his career prospects. Forget shooting for the stars, buddy, aim for a reasonable payday instead!'"
         )
     else:
         prompt = (
-            "You are a comedy writer with a dry, sarcastic style tasked with roasting someone based on their resume.\n"
-            "Your roast should be witty, observational, and subtly sarcastic. Avoid flowery language, metaphors, and over-the-top humor.\n"
+            "You are a comedy writer tasked with roasting someone based on their resume.\n"
+            "Your roast should be funny, creative, and have personality. Use colorful language, clever analogies, and humorous observations.\n"
             "Keep it light-hearted and non-offensive, but make it specifically relevant to corporate culture and office life.\n"
             "Include references to one or two of these topics: endless meetings, corporate buzzwords, office politics, performance reviews, middle management, email overload, corporate jargon, pointless KPIs, outdated technology, open office plans, work-life balance, corporate retreats, team building exercises, LinkedIn humble-brags, or corporate restructuring.\n"
             f"{profile_pic_context}\n"
@@ -522,9 +522,9 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
             f"- Automation Risk: {risk}%\n"
             f"- Human Spark Factor: {human_spark:.1f}%\n"
             f"- Matrix Quadrant: {quadrant}\n\n"
-            "Write a short, satirical roast (150-200 characters) focusing on their job's automation risk and their position in the matrix quadrant.\n"
-            "IMPORTANT: Ensure your response is a complete paragraph with full sentences and proper punctuation. Do not end mid-sentence.\n"
-            "Make it shareable and quotable for social media. Be direct, concise, and avoid unnecessary flourishes."
+            "Write a short, funny roast (2-3 sentences) focusing on their job's automation risk and their position in the matrix quadrant.\n"
+            "IMPORTANT: Ensure your response uses proper sentence structure and punctuation. Make it funny without being corny.\n"
+            "For reference, here's a good example of the tone and style: 'Rameel's smile looks like he just discovered the magic of flash photography for the first time. His LinkedIn skills list is probably longer than his Tinder matches. That shirt has more stars than his career prospects. Forget shooting for the stars, buddy, aim for a reasonable payday instead!'"
         )
     
     try:
@@ -532,12 +532,12 @@ def generate_roast(profile_info, risk, has_profile_pic=False):
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
             messages=[
-                {"role": "system", "content": "You are a comedy writer who specializes in dry humor, sarcasm, and observational comedy about workplace and technology."},
+                {"role": "system", "content": "You are a comedy writer who specializes in clever, funny roasts with personality. You use colorful language and creative analogies without being corny."},
                 {"role": "user", "content": prompt}
             ],
             max_tokens=200,
-            temperature=0.7,
-            presence_penalty=0.4,  # Moderate uniqueness
+            temperature=0.8,
+            presence_penalty=0.6,  # Encourage more unique responses
             frequency_penalty=0.5   # Moderate repetition prevention
         )
         
