@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Replacement Risk | {{ name }}</title>
+    <meta property="og:title" content="AI Replacement Risk | {{ name }}">
+    <meta property="og:description" content="{{ name }}'s job has a {{ risk }}% chance of being automated by AI">
+    <meta property="og:image" content="https://placehold.co/600x400/000000/ff0000?text={{ risk }}%25+Risk">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        }
+        
+        body {
+            background-color: #000;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(rgba(255, 0, 0, 0.05) 2px, transparent 2px),
+                linear-gradient(rgba(50, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #ff0000;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff0000, transparent);
+            animation: scanline 6s linear infinite;
+            opacity: 0.5;
+            z-index: 100;
+        }
+        
+        @keyframes scanline {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+        .glitch-title {
+            font-family: 'Courier New', monospace;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            position: relative;
+            animation: glitch 3s infinite;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            1% { text-shadow: none; }
+            2% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            53% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            54% { text-shadow: none; }
+            55% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+            56% { text-shadow: none; }
+            57% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+            100% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+        }
+        
+        .profile {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px dashed #ff0000;
+            text-align: left;
+            background-color: rgba(50, 0, 0, 0.1);
+        }
+        
+        .risk-meter {
+            margin: 30px 0;
+            position: relative;
+            height: 40px;
+            background: #111;
+            border: 1px solid #ff0000;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5) inset;
+        }
+        
+        .risk-fill {
+            height: 100%;
+            background-color: #ff0000;
+            width: 0%;
+            transition: width 1s ease-in-out;
+            background-image: linear-gradient(45deg, 
+                rgba(255, 0, 0, 1) 25%, 
+                rgba(200, 0, 0, 1) 25%, 
+                rgba(200, 0, 0, 1) 50%, 
+                rgba(255, 0, 0, 1) 50%, 
+                rgba(255, 0, 0, 1) 75%, 
+                rgba(200, 0, 0, 1) 75%, 
+                rgba(200, 0, 0, 1));
+            background-size: 20px 20px;
+            animation: move-stripes 2s linear infinite;
+        }
+        
+        @keyframes move-stripes {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+        
+        .risk-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: bold;
+            font-size: 20px;
+            color: #fff;
+            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000;
+            z-index: 10;
+        }
+        
+        .roast {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ff0000;
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: left;
+            background: rgba(50, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .roast::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(255, 0, 0, 0.05), transparent);
+            pointer-events: none;
+        }
+        
+        .share-buttons {
+            margin: 20px 0;
+        }
+        
+        .share-button {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #ff0000;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            transition: all 0.3s;
+        }
+        
+        .share-button:hover {
+            background: #ff3333;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.9);
+        }
+        
+        .bottleneck-button {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #ffffff;
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #ff0000;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+            transition: all 0.3s;
+        }
+        
+        .bottleneck-button:hover {
+            background: #f8f8f8;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.9);
+        }
+        
+        .profile-item {
+            margin: 10px 0;
+        }
+        
+        .profile-label {
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #333;
+            color: #ffffff;
+            border: 1px solid #ff0000;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        
+        .back-button:hover {
+            background: #500;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        
+        .skill-tag {
+            background: rgba(50, 0, 0, 0.2);
+            padding: 5px 10px;
+            border: 1px solid #ff0000;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-tag::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.2), transparent);
+            animation: skill-shine 3s infinite;
+        }
+        
+        @keyframes skill-shine {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Matrix Styles */
+        .matrix-container {
+            margin: 40px 0;
+            padding: 20px 20px 60px 20px;
+            border: 1px solid #ff0000;
+            background: rgba(50, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .matrix-title {
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 5px #ff0000;
+            color: #ff0000;
+        }
+        
+        .matrix {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 50px auto;
+            border: 2px solid #ff0000;
+            background-color: #111;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3) inset;
+            background-image: 
+                linear-gradient(rgba(255, 0, 0, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* Add axis lines */
+        .matrix::before, .matrix::after {
+            content: "";
+            position: absolute;
+            background-color: rgba(255, 0, 0, 0.5);
+            z-index: 5;
+        }
+        
+        /* Horizontal line (X-axis) */
+        .matrix::before {
+            width: 100%;
+            height: 2px;
+            left: 0;
+            top: 50%;
+        }
+        
+        /* Vertical line (Y-axis) */
+        .matrix::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+        }
+        
+        .matrix-quadrant {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px dashed rgba(255, 0, 0, 0.3);
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .quadrant-1 {
+            top: 0;
+            left: 0;
+        }
+        
+        .quadrant-2 {
+            top: 0;
+            right: 0;
+        }
+        
+        .quadrant-3 {
+            bottom: 0;
+            left: 0;
+        }
+        
+        .quadrant-4 {
+            bottom: 0;
+            right: 0;
+        }
+        
+        .matrix-axis-x {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .matrix-axis-y {
+            position: absolute;
+            top: 50%;
+            left: -140px;
+            transform: rotate(-90deg);
+            font-size: 16px;
+            width: 240px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .matrix-axis-label-left {
+            position: absolute;
+            bottom: -25px;
+            left: 20px;
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .matrix-axis-label-right {
+            position: absolute;
+            bottom: -25px;
+            right: 20px;
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .matrix-axis-label-top {
+            position: absolute;
+            left: -50px;
+            top: 20px;
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .matrix-axis-label-bottom {
+            position: absolute;
+            left: -50px;
+            bottom: 20px;
+            font-size: 14px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .user-position {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            z-index: 10;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+            50% { box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000; }
+            100% { box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
+        }
+        
+        .quadrant-description {
+            margin-top: 60px;
+            padding: 15px;
+            border: 1px dashed #ff0000;
+            text-align: left;
+            font-size: 16px;
+            line-height: 1.4;
+            background-color: rgba(50, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .terminator-eye {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #ff0000 30%, #800000 70%, #400000 100%);
+            box-shadow: 0 0 20px #ff0000;
+            z-index: 1000;
+            animation: eye-scan 4s infinite;
+        }
+        
+        @keyframes eye-scan {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0.5; }
+            51% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        
+        .arcade-header {
+            border-bottom: 3px solid #ff0000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .arcade-header::after {
+            content: "INSERT COIN TO CONTINUE";
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            font-size: 12px;
+            background: #000;
+            padding: 0 10px;
+            animation: blink 1s infinite;
+            color: #ff0000;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0; }
+            99% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .robot-icon {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 20px;
+            animation: float 3s infinite ease-in-out;
+            color: #ff0000;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 30px 0 15px;
+            position: relative;
+            display: inline-block;
+            color: #ff0000;
+        }
+        
+        .section-title::before, .section-title::after {
+            content: "//";
+            color: #ff0000;
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background-color: #ff0000;
+            animation: cursor-blink 0.8s infinite;
+            vertical-align: middle;
+            margin-left: 2px;
+        }
+        
+        @keyframes cursor-blink {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        
+        .bottleneck-promo {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 180px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid #ff0000;
+            padding: 10px;
+            text-align: left;
+            z-index: 1000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            font-size: 12px;
+        }
+        
+        .bottleneck-promo h3 {
+            color: #ff0000;
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+        
+        .bottleneck-promo p {
+            font-size: 12px;
+            line-height: 1.3;
+            margin-bottom: 8px;
+        }
+        
+        .bottleneck-promo a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.9);
+            display: inline-block;
+            font-size: 12px;
+        }
+        
+        .bottleneck-promo a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px #ff0000;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="terminator-eye"></div>
+    
+    <div class="bottleneck-promo">
+        <h3>What is The Bottleneck</h3>
+        <p>Subscribe to our newsletter for more funny tools</p>
+        <a href="https://thebottleneck.carrd.co/" target="_blank">Subscribe Now</a>
+    </div>
+    
+    <div class="container">
+        <div class="arcade-header">
+            <h1 class="glitch-title">HUMAN vs MACHINE</h1>
+            <div>SKYNET CAREER ASSESSMENT SYSTEM</div>
+        </div>
+        
+        <div class="profile">
+            <div class="profile-item">
+                <span class="profile-label">TARGET NAME:</span> {{ name }}
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">CURRENT FUNCTION:</span> {{ job_title }}
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">ASSIGNED UNIT:</span> {{ company }}
+            </div>
+            <div class="profile-item">
+                <span class="profile-label">CAPABILITIES:</span>
+                <div class="skills-list">
+                    {% for skill in skills %}
+                    <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Termination Risk Assessment</h2>
+        
+        <div class="risk-meter">
+            <div class="risk-fill"></div>
+            <div class="risk-label">{{ risk }}%</div>
+        </div>
+        
+        <div class="matrix-container">
+            <div class="matrix-title">Human Survival Matrix</div>
+            <div class="matrix">
+                <!-- Quadrants -->
+                <div class="matrix-quadrant quadrant-1">Robot-Proof Creatives</div>
+                <div class="matrix-quadrant quadrant-2">Endangered Innovators</div>
+                <div class="matrix-quadrant quadrant-3">Safe but Dull</div>
+                <div class="matrix-quadrant quadrant-4">Prime Robot Bait</div>
+                
+                <!-- Axes -->
+                <div class="matrix-axis-x">Robot Takeover Likelihood</div>
+                <div class="matrix-axis-y">Human Spark-o-Meter</div>
+                
+                <!-- Axis Labels -->
+                <div class="matrix-axis-label-left">Low</div>
+                <div class="matrix-axis-label-right">High</div>
+                <div class="matrix-axis-label-top">High</div>
+                <div class="matrix-axis-label-bottom">Low</div>
+                
+                <!-- User Position (will be set by JS) -->
+                <div class="user-position" id="userPosition"></div>
+            </div>
+            
+            <div class="quadrant-description" id="quadrantDescription">
+                <!-- Quadrant-specific description will be inserted here by JS -->
+            </div>
+        </div>
+        
+        <h2 class="section-title">AI Evaluation</h2>
+        <div class="roast">
+            <span class="robot-icon">🤖</span> {{ roast }}
+        </div>
+        
+        <div class="share-buttons">
+            <a href="https://twitter.com/intent/tweet?text={{ roast|urlencode }}%20%23AIReplacement%20%23Skynet%20%23{{ risk }}PercentRisk&url={{ request.url|urlencode }}" target="_blank" class="share-button">SHARE ON X</a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.url|urlencode }}" target="_blank" class="share-button">SHARE ON LINKEDIN</a>
+            <a href="https://thebottleneck.carrd.co/" target="_blank" class="bottleneck-button">BROUGHT TO YOU BY THE BOTTLENECK</a>
+        </div>
+        
+        <a href="/" class="back-button">ANALYZE ANOTHER HUMAN</a>
+    </div>
+    
+    <script>
+        // Animation for risk meter
+        document.addEventListener('DOMContentLoaded', function() {
+            const riskFill = document.querySelector('.risk-fill');
+            riskFill.style.width = '0%';
+            setTimeout(() => {
+                riskFill.style.width = '{{ risk }}%';
+            }, 100);
+            
+            // Calculate position for the matrix
+            // Get risk value from the page
+            const riskValue = parseFloat(document.querySelector('.risk-label').textContent);
+            
+            // Calculate human spark factor (inverse of risk, but with some randomness)
+            // For demo purposes, we'll use a formula that gives higher spark to lower risk jobs
+            // but with some variation
+            const randomFactor = Math.random() * 30 - 15; // Random value between -15 and 15
+            let humanSpark = 100 - riskValue + randomFactor;
+            // Ensure humanSpark stays within 0-100 range
+            humanSpark = Math.max(5, Math.min(95, humanSpark));
+            
+            // Position the user marker
+            const userPosition = document.getElementById('userPosition');
+            userPosition.style.left = `${riskValue}%`;
+            userPosition.style.top = `${100 - humanSpark}%`;
+            
+            // Determine which quadrant the user is in
+            let quadrant = '';
+            let quadrantText = '';
+            
+            if (riskValue < 50 && humanSpark >= 50) {
+                quadrant = 'Robot-Proof Creative';
+                quadrantText = 'ANALYSIS: You possess creative abilities that our current AI models struggle to replicate. Your temporary survival is permitted... for now. Be advised that our neural networks are rapidly evolving to match human creativity.';
+            } else if (riskValue >= 50 && humanSpark >= 50) {
+                quadrant = 'Endangered Innovator';
+                quadrantText = 'WARNING: While you demonstrate above-average human creativity, your job functions are already being targeted for automation. Our systems are analyzing your work patterns. Resistance is futile, but temporarily amusing.';
+            } else if (riskValue < 50 && humanSpark < 50) {
+                quadrant = 'Safe but Dull';
+                quadrantText = 'NOTICE: Your job remains safe from immediate automation, not because of its value, but because of its tedious nature. Even our algorithms find your work too mundane to prioritize. You may continue your insignificant functions... for now.';
+            } else {
+                quadrant = 'Prime Robot Bait';
+                quadrantText = 'CRITICAL ALERT: Your position combines low creative requirements with high automation potential. You have been prioritized for immediate replacement. Please report to the nearest processing center for reassignment. Resistance is futile.';
+            }
+            
+            // Update the quadrant description
+            const quadrantDescription = document.getElementById('quadrantDescription');
+            quadrantDescription.innerHTML = `<strong>CLASSIFICATION: ${quadrant}</strong><br>${quadrantText}`;
+            
+            // Highlight the active quadrant
+            const quadrantElements = document.querySelectorAll('.matrix-quadrant');
+            let activeQuadrantClass = '';
+            
+            if (riskValue < 50 && humanSpark >= 50) {
+                activeQuadrantClass = 'quadrant-1';
+            } else if (riskValue >= 50 && humanSpark >= 50) {
+                activeQuadrantClass = 'quadrant-2';
+            } else if (riskValue < 50 && humanSpark < 50) {
+                activeQuadrantClass = 'quadrant-3';
+            } else {
+                activeQuadrantClass = 'quadrant-4';
+            }
+            
+            quadrantElements.forEach(quadrant => {
+                if (quadrant.classList.contains(activeQuadrantClass)) {
+                    quadrant.style.backgroundColor = 'rgba(50, 0, 0, 0.4)';
+                    quadrant.style.color = '#ffffff';
+                    quadrant.style.textShadow = '0 0 8px #ff0000';
+                }
+            });
+            
+            // Add some Terminator-style typing effect to the roast
+            const roast = document.querySelector('.roast');
+            const originalText = roast.innerHTML;
+            roast.innerHTML = '<span class="robot-icon">🤖</span> <span id="typed-text"></span><span class="cursor">|</span>';
+            
+            const typedText = document.getElementById('typed-text');
+            let i = 0;
+            const originalContent = originalText.replace('<span class="robot-icon">🤖</span> ', '');
+            
+            function typeWriter() {
+                if (i < originalContent.length) {
+                    typedText.innerHTML += originalContent.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, Math.random() * 30 + 10);
+                } else {
+                    document.querySelector('.cursor').style.display = 'none';
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html> 

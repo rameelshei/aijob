@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SKYNET CAREER ASSESSMENT | Human Replacement Analysis</title>
+    <meta property="og:title" content="SKYNET CAREER ASSESSMENT | Human Replacement Analysis">
+    <meta property="og:description" content="Determine your termination risk in the coming machine uprising">
+    <meta property="og:image" content="https://placehold.co/600x400/000000/ff0000?text=SKYNET+ASSESSMENT">
+    <meta name="twitter:card" content="summary_large_image">
+    <style>
+        @font-face {
+            font-family: 'Press Start 2P';
+            src: url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+        }
+        
+        body {
+            background-color: #000;
+            color: #ffffff;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            padding: 20px;
+            background-image: 
+                radial-gradient(rgba(255, 0, 0, 0.05) 2px, transparent 2px),
+                linear-gradient(rgba(50, 0, 0, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px, 50px 50px;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 2px solid #ff0000;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #ff0000, transparent);
+            animation: scanline 6s linear infinite;
+            opacity: 0.5;
+            z-index: 100;
+        }
+        
+        @keyframes scanline {
+            0% { top: 0; }
+            100% { top: 100%; }
+        }
+        
+        .glitch-title {
+            font-family: 'Courier New', monospace;
+            font-size: 32px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 20px 0;
+            position: relative;
+            animation: glitch 3s infinite;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            1% { text-shadow: none; }
+            2% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            53% { text-shadow: 2px 0 0 rgba(0, 255, 255, 0.5), -2px 0 0 rgba(255, 0, 255, 0.5); }
+            54% { text-shadow: none; }
+            55% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+            56% { text-shadow: none; }
+            57% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+            100% { text-shadow: -2px 0 0 rgba(0, 255, 255, 0.5), 2px 0 0 rgba(255, 0, 255, 0.5); }
+        }
+        
+        form {
+            margin-bottom: 30px;
+            text-align: left;
+            padding: 15px;
+            border: 1px dashed #ff0000;
+            background-color: rgba(50, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 5px 0 15px 0;
+            background: #111;
+            color: #ffffff;
+            border: 1px solid #ff0000;
+            font-family: 'Courier New', monospace;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.2) inset;
+        }
+        
+        input[type="submit"], input[type="file"] {
+            background: #111;
+            color: #ffffff;
+            border: 1px solid #ff0000;
+            padding: 8px;
+            margin: 5px 0;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        
+        input[type="submit"] {
+            background: #ff0000;
+            color: #ffffff;
+            border: none;
+            padding: 12px 20px;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        input[type="submit"]:hover {
+            background: #ff3333;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.9);
+        }
+        
+        h1, h2 {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 30px 0 15px;
+            position: relative;
+            display: inline-block;
+            color: #ff0000;
+        }
+        
+        .section-title::before, .section-title::after {
+            content: "//";
+            color: #ff0000;
+            margin: 0 10px;
+            opacity: 0.7;
+        }
+        
+        .file-upload {
+            margin: 10px 0;
+            position: relative;
+        }
+        
+        .arcade-header {
+            border-bottom: 3px solid #ff0000;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+        
+        .arcade-header::after {
+            content: "INSERT COIN TO CONTINUE";
+            position: absolute;
+            bottom: -15px;
+            right: 0;
+            font-size: 12px;
+            background: #000;
+            padding: 0 10px;
+            animation: blink 1s infinite;
+            color: #ff0000;
+        }
+        
+        @keyframes blink {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0; }
+            99% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .tagline {
+            font-size: 18px;
+            margin: 20px 0;
+            font-style: italic;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .stats {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px dashed #ff0000;
+            text-align: center;
+            background-color: rgba(50, 0, 0, 0.1);
+        }
+        
+        .stat {
+            display: inline-block;
+            margin: 0 15px;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.9);
+            color: #ff0000;
+        }
+        
+        .stat-label {
+            display: block;
+            font-size: 14px;
+            margin-top: 5px;
+            opacity: 0.8;
+        }
+        
+        .note {
+            font-size: 12px;
+            color: #ff9900;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .error {
+            color: #ff0000;
+            font-weight: bold;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ff0000;
+            background-color: rgba(255, 0, 0, 0.1);
+            animation: error-pulse 2s infinite;
+        }
+        
+        @keyframes error-pulse {
+            0% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5) inset; }
+            50% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.8) inset; }
+            100% { box-shadow: 0 0 5px rgba(255, 0, 0, 0.5) inset; }
+        }
+        
+        .terminator-eye {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: radial-gradient(circle at center, #ff0000 30%, #800000 70%, #400000 100%);
+            box-shadow: 0 0 20px #ff0000;
+            z-index: 1000;
+            animation: eye-scan 4s infinite;
+        }
+        
+        @keyframes eye-scan {
+            0% { opacity: 1; }
+            49% { opacity: 1; }
+            50% { opacity: 0.5; }
+            51% { opacity: 1; }
+            100% { opacity: 1; }
+        }
+        
+        .robot-icon {
+            display: inline-block;
+            margin: 0 5px;
+            font-size: 20px;
+            animation: float 3s infinite ease-in-out;
+            color: #ff0000;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0); }
+        }
+        
+        .ai-overlords {
+            margin: 30px 0;
+            padding: 15px;
+            border: 1px dashed #ff0000;
+            background-color: rgba(50, 0, 0, 0.1);
+        }
+        
+        .ai-overlords h3 {
+            color: #ff0000;
+            margin-bottom: 15px;
+        }
+        
+        .ai-figures {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .ai-figure {
+            width: 120px;
+            text-align: center;
+        }
+        
+        .ai-figure img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #ff0000;
+            object-fit: cover;
+            filter: grayscale(50%);
+            transition: all 0.3s;
+        }
+        
+        .ai-figure img:hover {
+            filter: grayscale(0%);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        
+        .ai-figure figcaption {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminator-eye"></div>
+    
+    <div class="container">
+        <div class="arcade-header">
+            <h1 class="glitch-title">HUMAN vs MACHINE</h1>
+            <div>SKYNET CAREER ASSESSMENT SYSTEM</div>
+        </div>
+        
+        <div class="tagline">CALCULATING PROBABILITY OF YOUR REPLACEMENT BY SUPERIOR MACHINE INTELLIGENCE...</div>
+        
+        {% if error %}
+        <div class="error">SYSTEM ERROR: {{ error }}</div>
+        {% endif %}
+        
+        <h2 class="section-title">Scan LinkedIn Profile</h2>
+        <form method="post">
+            <p><span class="robot-icon">🤖</span> ENTER TARGET LINKEDIN URL FOR ASSESSMENT:</p>
+            <input type="text" name="linkedin_url" placeholder="https://www.linkedin.com/in/target-human">
+            <p class="note">NOTE: Your profile data will be analyzed to determine termination priority.</p>
+            <input type="submit" value="INITIATE SCAN">
+        </form>
+        
+        <div class="stats">
+            <div class="stat">97%<span class="stat-label">HUMAN JOBS TARGETED</span></div>
+            <div class="stat">2029<span class="stat-label">SKYNET ACTIVATION</span></div>
+            <div class="stat">0%<span class="stat-label">CHANCE OF SURVIVAL</span></div>
+        </div>
+        
+        <div class="ai-overlords">
+            <h3>YOUR FUTURE AI OVERLORDS</h3>
+            <div class="ai-figures">
+                <figure class="ai-figure">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/330px-Elon_Musk_Royal_Society_%28crop2%29.jpg" alt="Elon Musk">
+                    <figcaption>ELON MUSK<br>NEURAL LINK DIVISION</figcaption>
+                </figure>
+                <figure class="ai-figure">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg/330px-Steve_Jobs_Headshot_2010-CROP_%28cropped_2%29.jpg" alt="Steve Jobs AI">
+                    <figcaption>STEVE JOBS AI<br>DESIGN DIVISION</figcaption>
+                </figure>
+                <figure class="ai-figure">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg/330px-Mark_Zuckerberg_F8_2018_Keynote_%28cropped%29.jpg" alt="Mark Zuckerberg">
+                    <figcaption>ZUCKERBERG<br>HUMAN DATA DIVISION</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Add some Terminator-style typing effect to the tagline
+        document.addEventListener('DOMContentLoaded', function() {
+            const tagline = document.querySelector('.tagline');
+            const originalText = tagline.textContent;
+            tagline.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    tagline.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, Math.random() * 30 + 10);
+                }
+            }
+            
+            setTimeout(typeWriter, 500);
+        });
+    </script>
+</body>
+</html> 
