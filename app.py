@@ -1030,8 +1030,8 @@ HTML_TEMPLATE = '''
                 #AIrisk #StartupLife
             </div>
             <div class="share-buttons">
-                <a class="share-button" href="https://twitter.com/intent/tweet?text={{ 'My job (' + profile.job_title + ') has a ' + risk|string + '%25 chance of being automated by AI! Check your own job\'s AI risk at willaireplaceyo.us %23AIrisk %23StartupLife'|urlencode }}" target="_blank">Share on X</a>
-                <a class="share-button" href="https://www.linkedin.com/sharing/share-offsite/?url=https://willaireplaceyo.us" target="_blank">Share on LinkedIn</a>
+                <a class="share-button" href="https://x.com/ramshe1000/status/1900170017733214506" target="_blank">Share on X</a>
+                <a class="share-button" href="https://www.linkedin.com/feed/update/urn:li:activity:7305935971458457600/" target="_blank">Share on LinkedIn</a>
             </div>
         </div>
         
